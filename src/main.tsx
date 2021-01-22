@@ -2,15 +2,17 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
 import './index.css'
-import App from './App'
+import Signin from './components/signin'
 
-const store = createStore(reducer)
+function state() {
+  }
+
+const store = createStore(state)
 
 render(
   <Provider store={store}>
-    <App />
+    <Signin />
   </Provider>,
   document.getElementById('root')
 )
