@@ -4,7 +4,7 @@ import { Button, Input } from 'semantic-ui-react'
 function Settings() {
 
     const [repos, setRepos] = useState("")
-    const [input, setInput] = useState("victor141516")
+    const [input, setInput] = useState("davidchiche1412")
 
     useEffect(() => { fetchData() }, [])
 

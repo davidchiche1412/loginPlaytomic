@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import firebase from 'firebase/app';
 import "firebase/auth";
 import {
-  FirebaseAuthConsumer,
   FirebaseAuthProvider,
 } from "@react-firebase/auth";
 import { firebaseConfig } from "../../config";
