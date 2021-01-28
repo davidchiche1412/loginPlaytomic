@@ -6,10 +6,16 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
+    "@react-firebase/auth": "^0.2.10",
+    "@types/react-router-dom": "^5.1.7",
+    "firebase": "^8.2.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
