@@ -1,30 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Input } from 'semantic-ui-react'
 
 function Settings() {
 
-    var inputString = ""
+    const [repos, setRepos] = useState("")
+    const [input, setInput] = useState("victor141516")
+
+    useEffect(() => { fetchData() }, [])
 
     const handleChange = (e: {target: {value:string}}) => {
-        inputString = e.target.value 
+        setInput(e.target.value) 
     }
 
     const fetchData = () => {
-        fetch(`https://api.github.com/users/${inputString}/repos`)
+        fetch(`https://api.github.com/users/${input}/repos`)
         .then(response => response.json())  
         .then((data: [{html_url: string, name: string}]) => {
-            if (data.constructor.name === 'Array') {
-                document.getElementById('repos')!.innerHTML = ''
-                data.forEach(element => displayData(element.html_url, element.name))
-            }         
+           setRepos(displayData(data))
         });
     }
 
-    const displayData = (url: string, name: string) => {
-        var li = document.createElement('li');
-        li.innerHTML = (`<p>${name} => <a href='${url}'>${url}</a></p>`)
-        document.getElementById('repos')!.appendChild(li)
-    }
+    function displayData(data: [{html_url: string, name: string}]): any {
+        return (
+            <ul>
+              {data.map((element) =>
+                <li key= {element.html_url}><p>{element.name}<a href={element.html_url}>{element.html_url}</a></p></li>
+              )}
+            </ul>
+          )
+    }   
 
     return (
         <div className = 'container'>
@@ -37,7 +41,7 @@ function Settings() {
                 <Button onClick={() => { fetchData() }}>FETCH</Button>
             </div>
 
-            <ul id='repos' style={{width: '500px'}}></ul>
+            <ul id='repos' style={{width: '500px'}}>{repos}</ul>
 
         </div>
 

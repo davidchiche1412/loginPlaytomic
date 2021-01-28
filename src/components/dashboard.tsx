@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'semantic-ui-react'
 
 function Dashboard() {
     const [image, displayImage] = useState("");
+    
+    useEffect(() => { fetchData() }, [])
 
     const fetchData = () => {
         fetch('https://randomfox.ca/floof/')
@@ -16,7 +18,7 @@ function Dashboard() {
                 <h2 style={{padding: '20px', color: 'grey'}}>DAHSBOARD</h2>
             </div>
 
-            <Button style={{marginLeft: 'auto', marginRight: 'auto', display: 'block', marginTop: '10px'}} onClick={() => { fetchData() }}>FETCH</Button>
+            <Button style={{marginLeft: 'auto', marginRight: 'auto', display: 'block', marginTop: '10px'}} onClick={() => { fetchData() }}>REFERSH</Button>
 
             { image ? <img width="300" height="300" src={image} alt="Fox" style={{display: 'block', marginLeft: 'auto', marginRight: 'auto',  marginTop: '10px'}}></img> : null }
         </div>
