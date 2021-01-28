@@ -13,7 +13,6 @@ const Signin = () => {
   const history = useHistory();
 
   const handleRedirect = (photoURL: string, user: string ) => {
-    console.log(user)
     localStorage.setItem("photo", photoURL!);
     localStorage.setItem("user", user)
     history.push("/");
@@ -31,7 +30,6 @@ const Signin = () => {
           <Button color='google plus' content='Sign In with Google' icon='google' labelPosition='left' onClick={() => {
             const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithPopup(googleAuthProvider).then((result) => {
-              console.log(result)
               handleRedirect(result.user!.photoURL!, result.user!.displayName!)             
             }).catch((error) => {
               console.log(error.message)
@@ -42,7 +40,6 @@ const Signin = () => {
           <Button color='black' content='Sign In with GitHub' icon='github' labelPosition='left' onClick={() => {
             const githubAuthProvider = new firebase.auth.GithubAuthProvider();
             firebase.auth().signInWithPopup(githubAuthProvider).then((result) => {
-              console.log(result)
               handleRedirect(result.user!.photoURL!, result.additionalUserInfo!.username!)             
             }).catch((error) => {
               console.log(error.message)
